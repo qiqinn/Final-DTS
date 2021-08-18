@@ -1,10 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 
-def reset_entry():
-    age_tf.delete(0,'end')
-    height_tf.delete(0,'end')
-    weight_tf.delete(0,'end')
+
 
 def calculate_bmi():
     try:
@@ -12,8 +9,6 @@ def calculate_bmi():
         float(height_tf.get())
     except:
         messagebox.showerror('salah input', 'usia, tinggi dan berat badan harus dalam angka')
-
-        
 
     kg = float(weight_tf.get())
     m = float(height_tf.get())/100
@@ -23,15 +18,20 @@ def calculate_bmi():
 
 def bmi_index(bmi):
     if bmi < 18.5:
-        messagebox.showinfo('Hasil', f'BMI = {bmi} kekurangan berat badan')
+        messagebox.showinfo('Hasil', f'BMI = {bmi} \nkekurangan berat badan')
     elif (bmi > 18.5) and (bmi < 24.9):
-        messagebox.showinfo('Hasil', f'BMI = {bmi} berat badan normal')
+        messagebox.showinfo('Hasil', f'BMI = {bmi} \nberat badan normal')
     elif (bmi > 24.9) and (bmi < 29.9):
-        messagebox.showinfo('Hasil', f'BMI = {bmi} kelebihan berat badan')
+        messagebox.showinfo('Hasil', f'BMI = {bmi} \nkelebihan berat badan')
     elif (bmi > 29.9):
-        messagebox.showinfo('Hasil', f'BMI = {bmi} obesitas') 
+        messagebox.showinfo('Hasil', f'BMI = {bmi} \nobesitas') 
     else:
         messagebox.showerror('Hasil', 'error')   
+
+def reset_entry():
+    age_tf.delete(0,'end')
+    height_tf.delete(0,'end')
+    weight_tf.delete(0,'end')
 
 ws = Tk()
 ws.title('Calculator BMI')
