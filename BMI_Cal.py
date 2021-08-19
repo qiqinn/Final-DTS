@@ -1,14 +1,19 @@
 from tkinter import *
 from tkinter import messagebox
 
-
-
-def calculate_bmi():
+def check_entry():
     try:
         float(weight_tf.get())
         float(height_tf.get())
-    except:
-        messagebox.showerror('salah input', 'usia, tinggi dan berat badan harus dalam angka')
+        int(age_tf.get())
+    except Exception:
+        messagebox.showerror('salah input',
+        'usia, tinggi dan berat badan harus dalam angka dan tidak boleh kosong')
+    
+    calculate_bmi()
+
+
+def calculate_bmi():
 
     kg = float(weight_tf.get())
     m = float(height_tf.get())/100
@@ -116,7 +121,7 @@ frame3.grid(row=5, columnspan=3, pady=10)
 cal_btn = Button(
     frame3,
     text='Hitung',
-    command=calculate_bmi
+    command=check_entry
 )
 cal_btn.pack(side=LEFT)
 
@@ -125,13 +130,8 @@ reset_btn = Button(
     text='Reset',
     command=reset_entry
 )
-reset_btn.pack(side=LEFT)
+reset_btn.pack(side=RIGHT)
 
-exit_btn = Button(
-    frame3,
-    text='Keluar',
-    command=lambda:ws.destroy()
-)
-exit_btn.pack(side=RIGHT)
+
 
 ws.mainloop()
